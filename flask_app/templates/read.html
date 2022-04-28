@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class = text-primary>All Users</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <th scope="col">ID</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Actions</th>
+        </thead>
+        <tbody>
+            {% for one_user in all_users %}
+                <tr>
+                    <th scope="row">{{one_user.id}}</th>
+                    <td>{{one_user.first_name}} {{one_user.last_name}}</td>
+                    <td>{{one_user.email}}</td>
+                    <td>{{one_user.created_at}}</td>
+                    <td>
+                        <a href="/users/show/{{one_user.id}}">Show</a> | 
+                        <a href="/users/edit/{{one_user.id}}">Edit</a> | 
+                        <a href="/users/delete/{{one_user.id}}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/users/form" type="button" class="btn btn-info">Add a new user</a>
+</body>
+</html>
